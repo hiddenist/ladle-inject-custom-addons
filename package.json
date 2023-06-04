@@ -1,0 +1,24 @@
+{
+  "name": "ladle-addon-button",
+  "version": "0.0.1",
+  "description": "Adds a button to the Ladle addon bar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiddenist/ladle-addon-button.git"
+  },
+  "keywords": [
+    "ladle",
+    "custom",
+    "addon"
+  ],
+  "author": "@hiddenist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hiddenist/ladle-addon-button/issues"
+  },
+  "homepage": "https://github.com/hiddenist/ladle-addon-button#readme"
+}
