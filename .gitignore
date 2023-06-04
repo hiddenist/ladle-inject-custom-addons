@@ -1,0 +1,28 @@
+# Logs
+*.log
+npm-debug.log*
+
+# non-pnpm locks
+yarn.lock
+package-lock.json
+
+# 2 heavy 4 repo
+**/node_modules/**
+_node_modules
+.pnp.cjs
+
+# build files
+dist
+tsconfig.tsbuildinfo
+
+# IDE configs
+.vscode/
+.idea/
+
+# your Vim swap doesn't belong here
+*.swp
+
+# I wish I could make my OS stop generating this garbage in my code directories
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,16 @@
+.ladle-addons > ul > li > button.custom-dialog-button-open {
+  color: var(--ladle-color-accent)
+}
+
+button.custom-ladle-button {
+  height: 36px;
+  width: 36;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.custom-ladle-close-button-wrapper {
+  position: absolute;
+  inset-inline-end: -6px;
+  top: 0px;
+}
