@@ -1,13 +1,12 @@
 {
   "name": "ladle-inject-custom-addons",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Adds a button to the Ladle addon bar",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "!dist/tsconfig.tsbuildinfo"
+    "dist"
   ],
   "scripts": {
     "build": "tsup && tsc",
