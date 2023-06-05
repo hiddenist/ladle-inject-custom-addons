@@ -12,6 +12,7 @@ pnpm add ladle-inject-custom-addons
 ```
 
 > **Note**
+>
 > Replace `pnpm` with `yarn` or `npm` to match what you use for your project. 😉
 
 ### Basic Usage
@@ -87,4 +88,5 @@ const MyIcon = () => (
 This package utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
 
 > **Warning**
+>
 > This method of injecting components is not very stable. Changes to the Ladle package could easily break this in future updates.
