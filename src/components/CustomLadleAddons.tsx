@@ -1,7 +1,8 @@
 import React from "react"
 import { createPortal } from "react-dom"
 
-export interface CustomLadleAddonsProps extends Required<React.PropsWithChildren> {
+export interface CustomLadleAddonsProps
+  extends Required<React.PropsWithChildren> {
   /**
    * If set to true, this prepends your addons to the start of the list instead of the end.
    * Note: it has to create a second list item for this to work.
@@ -17,7 +18,9 @@ export const CustomLadleAddons: React.FC<CustomLadleAddonsProps> = ({
   prepend = false,
   children,
 }) => {
-  const [addonsList, setAddonsList] = React.useState<HTMLUListElement | null>(null)
+  const [addonsList, setAddonsList] = React.useState<HTMLUListElement | null>(
+    null
+  )
 
   React.useEffect(() => {
     const list = getAddonsListElement(prepend)
