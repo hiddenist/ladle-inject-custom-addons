@@ -1,5 +1,5 @@
 {
-  "name": "ladle-addon-button",
+  "name": "ladle-inject-custom-addons",
   "version": "0.0.1",
   "description": "Adds a button to the Ladle addon bar",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hiddenist/ladle-addon-button.git"
+    "url": "git+https://github.com/hiddenist/ladle-inject-custom-addons.git"
   },
   "keywords": [
     "ladle",
@@ -24,11 +24,14 @@
   "author": "@hiddenist",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hiddenist/ladle-addon-button/issues"
+    "url": "https://github.com/hiddenist/ladle-inject-custom-addons/issues"
   },
-  "homepage": "https://github.com/hiddenist/ladle-addon-button#readme",
-  "dependencies": {},
+  "homepage": "https://github.com/hiddenist/ladle-inject-custom-addons#readme",
+  "dependencies": {
+    "react-dom": "^18.2.0"
+  },
   "peerDependencies": {
+    "@ladle/react": "^2.13.0",
     "react": "^18.2.0",
     "typescript": "^5.1.3"
   },
