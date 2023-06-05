@@ -1,5 +1,6 @@
 import React from "react"
 import { createPortal } from "react-dom"
+import getAddonsListElement from "../utils/getAddonsListElement"
 
 export interface CustomLadleAddonsProps
   extends Required<React.PropsWithChildren> {
@@ -35,26 +36,4 @@ export const CustomLadleAddons: React.FC<CustomLadleAddonsProps> = ({
   }
 
   return createPortal(children, addonsList)
-}
-
-const getAddonsListElement = (prepend = false) => {
-  const addons = document.getElementsByClassName("ladle-addons")[0]
-  const lists = addons?.getElementsByTagName("ul")
-  if (!addons || !lists) {
-    return null
-  }
-
-  if (!prepend) {
-    const lastList = lists[lists.length - 1]
-    return lastList ?? null
-  }
-
-  const firstList = lists[0]
-  if (lists.length > 1 && firstList) {
-    return firstList
-  }
-
-  const prependedList = document.createElement("ul")
-  addons.prepend(prependedList)
-  return prependedList
 }
