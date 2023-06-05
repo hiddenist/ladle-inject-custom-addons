@@ -1,6 +1,7 @@
 import React from "react"
 import { DialogCloseButton, DialogCloseButtonProps } from "./DialogCloseButton"
 import useOnClickOutside from "../utils/useOnClickOutside"
+import addClassName from "../utils/addClassName"
 
 export interface AddonDialogProps extends React.ComponentProps<"div"> {
   isOpen: boolean
@@ -18,6 +19,8 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
   setIsOpen,
   closeOnClickAway = true,
   children,
+  modalBodyProps = {},
+  closeButtonProps = {},
   ...divProps
 }) => {
   const dialogRef = React.useRef<HTMLDivElement>(null)
@@ -36,8 +39,20 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
       ref={dialogRef}
       {...divProps}
     >
-      <DialogCloseButton onClick={closeDialog} />
-      <div className="ladle-addon-modal-body">{children}</div>
+      <DialogCloseButton
+        {...closeButtonProps}
+        onClick={(e) => {
+          closeButtonProps.onClick?.(e)
+          if (e.isDefaultPrevented()) return
+          closeDialog()
+        }}
+      />
+      <div
+        {...modalBodyProps}
+        className={addClassName("ladle-addon-modal-body", modalBodyProps?.id)}
+      >
+        {children}
+      </div>
     </div>
   )
 }

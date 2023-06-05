@@ -25,5 +25,9 @@
       "warn",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
     ]
-  }
+  },
+  "ignorePatterns": [
+    "node_modules/**/*",
+    "dist/**/*"
+  ]
 }
