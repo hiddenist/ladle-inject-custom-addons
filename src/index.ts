@@ -5,3 +5,5 @@ export * from "./components/DialogCloseButton"
 export * from "./components/CustomLadleAddons"
 export * from "./components/LadleIconButton"
 export * from "./components/icons"
+
+import "./style.css"

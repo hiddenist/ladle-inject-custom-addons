@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "ladle-inject-custom-addons": ["src/index.ts"]
+    }
+  },
+  "include": ["./*"]
+}

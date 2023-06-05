@@ -18,7 +18,7 @@ export const AddonButton: React.FC<AddonButtonProps> = ({
     <button aria-label={tooltip} type="button" {...buttonProps}>
       {icon}
       <span className="ladle-addon-tooltip">{tooltip}</span>
-      {children}
     </button>
+      {children}
   </li>
 )
