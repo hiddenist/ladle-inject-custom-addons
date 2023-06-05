@@ -9,6 +9,7 @@ This package exists because Ladle does not yet officially support third party ad
 * [Customization](#customization)
   + [Icons](#icons)
   + [Prepending your addons](#prepending-your-addons)
+* [Troubleshooting](#troubleshooting)
 * [How this package works](#how-this-package-works)
 * [Questions or contributions](#questions-or-contributions)
 
@@ -35,6 +36,8 @@ import {
   AddonDialogButton,
   ExampleIcon
 } from "ladle-inject-custom-addons"
+
+import "ladle-inject-custom-addons/assets/style.css"
 
 export const Provider: GlobalProvider = ({
   children,
@@ -110,6 +113,15 @@ export const Provider = ({
     {children}
   </>
 )
+```
+
+## Troubleshooting
+
+Prepended addons stacked? Close buttons on modals not showing up in the right place?
+Make sure that you've imported the stylesheet.
+
+```ts
+import "ladle-inject-custom-addons/assets/style.css"
 ```
 
 ## How this package works
