@@ -6,7 +6,8 @@
   "module": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "!dist/tsconfig.tsbuildinfo"
   ],
   "scripts": {
     "build": "tsup && tsc",
