@@ -19,7 +19,8 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
   setIsOpen,
   closeOnClickAway = true,
   children,
-  modalBodyProps,
+  modalBodyProps = {},
+  closeButtonProps = {},
   ...divProps
 }) => {
   const dialogRef = React.useRef<HTMLDivElement>(null)
@@ -38,7 +39,14 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
       ref={dialogRef}
       {...divProps}
     >
-      <DialogCloseButton onClick={closeDialog} />
+      <DialogCloseButton
+        {...closeButtonProps}
+        onClick={(e) => {
+          closeButtonProps.onClick?.(e)
+          if (e.isDefaultPrevented()) return
+          closeDialog()
+        }}
+      />
       <div
         {...modalBodyProps}
         className={addClassName("ladle-addon-modal-body", modalBodyProps?.id)}
