@@ -12,12 +12,14 @@ import { Truck, Layout } from "react-feather"
 
 export const Provider: GlobalProvider = ({ children }) => (
   <Context.Provider value={{ message: "in context" }}>
+    {children}
+    <CustomLadleAddons prepend>
+      <PrependedHelloAddon />
+    </CustomLadleAddons>
     <CustomLadleAddons>
-      <HelloAddon />
       <CustomDialogAddon />
       <ContextTestAddon />
     </CustomLadleAddons>
-    {children}
   </Context.Provider>
 )
 
@@ -25,10 +27,10 @@ const Context = React.createContext({
   message: "not in context",
 })
 
-const HelloAddon = () => (
+const PrependedHelloAddon = () => (
   <AddonButton
     icon={<ExampleIcon />}
-    onClick={() => alert("hello!")}
+    onClick={() => alert("hello! this addon should have been first in the list")}
     tooltip="Shows an alert to say hello."
   />
 )

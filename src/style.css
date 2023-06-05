@@ -14,3 +14,9 @@ button.custom-ladle-button {
   inset-inline-end: -6px;
   top: 0px;
 }
+
+@media only screen and (min-width: 768px) {
+  .ladle-addons {
+    display: flex;
+  }
+}
