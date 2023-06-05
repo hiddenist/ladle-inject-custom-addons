@@ -13,29 +13,29 @@ export const AddonDialogButton: React.FC<AddonDialogButtonProps> = ({
   ...buttonProps
 }) => {
   const [isOpen, setIsOpen] = React.useState(false)
-  const dialogId = React.useMemo(() => crypto.randomUUID(), [])
+  const dialogId = React.useMemo(() => "d" + crypto.randomUUID(), [])
   return (
-    <>
-      <AddonButton
-        aria-describedby={isOpen ? dialogId : undefined}
-        onClick={() => {
-          setIsOpen(true)
-        }}
-        {...buttonProps}
-        className={addClassName(
-          isOpen && "custom-dialog-button-open",
-          buttonProps.className
-        )}
+    <AddonButton
+      aria-describedby={isOpen ? dialogId : undefined}
+      {...buttonProps}
+      onClick={(e) => {
+        buttonProps.onClick?.(e)
+        if (e.isDefaultPrevented()) return
+        setIsOpen(true)
+      }}
+      className={addClassName(
+        isOpen && "custom-dialog-button-open",
+        buttonProps.className
+      )}
+    >
+      <AddonDialog
+        id={dialogId}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        {...dialogProps}
       >
-        <AddonDialog
-          id={dialogId}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          {...dialogProps}
-        >
-          {children}
-        </AddonDialog>
-      </AddonButton>
-    </>
+        {children}
+      </AddonDialog>
+    </AddonButton>
   )
 }

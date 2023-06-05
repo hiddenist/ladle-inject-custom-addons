@@ -6,14 +6,16 @@ export interface CustomLadleAddonsProps
   extends Required<React.PropsWithChildren> {
   /**
    * If set to true, this prepends your addons to the start of the list instead of the end.
-   * Note: it has to create a second list item for this to work.
+   * Note: it has to create a second list element for this to work.
    * @default false
    */
   prepend?: boolean
 }
 
 /**
- * Creates a portal to mount components to the Ladle addons list UI
+ * This should be the wrapper for all of your custom addon buttons.
+ *
+ * A portal is created to mount children to the Ladle addons list UI.
  */
 export const CustomLadleAddons: React.FC<CustomLadleAddonsProps> = ({
   prepend = false,
