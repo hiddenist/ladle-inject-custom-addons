@@ -13,6 +13,7 @@
     "build:watch": "pnpm build --watch",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{js,ts,jsx,tsx}\"",
+    "prepublish": "pnpm build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --no-emit"
   },
