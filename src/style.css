@@ -8,3 +8,9 @@ button.custom-ladle-button {
   border-color: transparent;
   box-shadow: none;
 }
+
+.custom-ladle-close-button-wrapper {
+  position: absolute;
+  inset-inline-end: -6px;
+  top: 0px;
+}

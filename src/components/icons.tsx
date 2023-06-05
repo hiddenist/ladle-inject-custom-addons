@@ -26,7 +26,7 @@ export const CloseIcon: React.FC<IconProps> = ({
   ...props
 }) => {
   return (
-    <IconSvg {...props}>
+    <IconSvg size={size} {...props}>
       <path d="M0 0h24v24H0z" stroke="none" />
       <path d="M18 6L6 18M6 6l12 12" />
     </IconSvg>
