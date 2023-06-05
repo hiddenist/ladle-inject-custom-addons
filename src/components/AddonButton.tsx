@@ -19,6 +19,6 @@ export const AddonButton: React.FC<AddonButtonProps> = ({
       {icon}
       <span className="ladle-addon-tooltip">{tooltip}</span>
     </button>
-      {children}
+    {children}
   </li>
 )

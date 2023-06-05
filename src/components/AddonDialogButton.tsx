@@ -7,7 +7,11 @@ export interface AddonDialogButtonProps extends AddonButtonProps {
   dialogProps?: AddonDialogProps
 }
 
-export const AddonDialogButton: React.FC<AddonDialogButtonProps> = ({ children, dialogProps, ...buttonProps }) => {
+export const AddonDialogButton: React.FC<AddonDialogButtonProps> = ({
+  children,
+  dialogProps,
+  ...buttonProps
+}) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const dialogId = React.useMemo(() => crypto.randomUUID(), [])
   return (
@@ -18,9 +22,17 @@ export const AddonDialogButton: React.FC<AddonDialogButtonProps> = ({ children, 
           setIsOpen(true)
         }}
         {...buttonProps}
-        className={addClassName(isOpen && "custom-dialog-button-open", buttonProps.className)}
+        className={addClassName(
+          isOpen && "custom-dialog-button-open",
+          buttonProps.className
+        )}
       >
-        <AddonDialog id={dialogId} isOpen={isOpen} setIsOpen={setIsOpen} {...dialogProps}>
+        <AddonDialog
+          id={dialogId}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          {...dialogProps}
+        >
           {children}
         </AddonDialog>
       </AddonButton>

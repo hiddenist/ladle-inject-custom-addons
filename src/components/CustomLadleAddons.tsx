@@ -1,15 +1,17 @@
 import React from "react"
 import { createPortal } from "react-dom"
 
-export interface CustomLadleAddonsProps extends Required<React.PropsWithChildren> {}
+export type CustomLadleAddonsProps = Required<React.PropsWithChildren>
 
 /**
  * Creates a portal to mount components to the Ladle addons list UI
  */
 export const CustomLadleAddons: React.FC<CustomLadleAddonsProps> = ({
-  children
+  children,
 }) => {
-  const [addonsList, setAddonsList] = React.useState<HTMLUListElement | null>(null)
+  const [addonsList, setAddonsList] = React.useState<HTMLUListElement | null>(
+    null
+  )
 
   React.useEffect(() => {
     const addons = document.getElementsByClassName("ladle-addons")[0]
@@ -24,8 +26,5 @@ export const CustomLadleAddons: React.FC<CustomLadleAddonsProps> = ({
     return null
   }
 
-  return createPortal(
-    children,
-    addonsList
-  )
+  return createPortal(children, addonsList)
 }

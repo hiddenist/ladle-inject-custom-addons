@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 interface IconSvgProps extends React.ComponentProps<"svg"> {
   /**
@@ -7,24 +7,23 @@ interface IconSvgProps extends React.ComponentProps<"svg"> {
   size?: number
 }
 
-const IconSvg: React.FC<IconSvgProps> = ({ size = 24, ...props }) => <svg
-  width={size}
-  height={size}
-  viewBox="0 0 24 24"
-  stroke="currentColor"
-  fill="none"
-  strokeWidth={2}
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  {...props}
-/>
+const IconSvg: React.FC<IconSvgProps> = ({ size = 24, ...props }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    fill="none"
+    strokeWidth={2}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  />
+)
 
-export interface IconProps extends Omit<IconSvgProps, "children"> {}
+export type IconProps = Omit<IconSvgProps, "children">
 
-export const CloseIcon: React.FC<IconProps> = ({
-  size = 18,
-  ...props
-}) => {
+export const CloseIcon: React.FC<IconProps> = ({ size = 18, ...props }) => {
   return (
     <IconSvg size={size} {...props}>
       <path d="M0 0h24v24H0z" stroke="none" />
