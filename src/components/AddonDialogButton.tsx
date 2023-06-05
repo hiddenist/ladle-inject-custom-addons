@@ -4,16 +4,17 @@ import addClassName from "../utils/addClassName"
 import { AddonButton, AddonButtonProps } from "./AddonButton"
 
 export interface AddonDialogButtonProps extends AddonButtonProps {
-  dialogProps?: AddonDialogProps
+  dialogProps?: Omit<AddonDialogProps, "isOpen" | "setIsOpen">
 }
 
 export const AddonDialogButton: React.FC<AddonDialogButtonProps> = ({
   children,
-  dialogProps,
+  dialogProps = {},
   ...buttonProps
 }) => {
   const [isOpen, setIsOpen] = React.useState(false)
-  const dialogId = React.useMemo(() => "d" + crypto.randomUUID(), [])
+  const generatedId = React.useMemo(() => "d" + crypto.randomUUID(), [])
+  const dialogId = dialogProps.id ?? generatedId
   return (
     <AddonButton
       aria-describedby={isOpen ? dialogId : undefined}
@@ -29,10 +30,10 @@ export const AddonDialogButton: React.FC<AddonDialogButtonProps> = ({
       )}
     >
       <AddonDialog
-        id={dialogId}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         {...dialogProps}
+        id={dialogId}
       >
         {children}
       </AddonDialog>
