@@ -3,6 +3,7 @@
     "incremental": true,
     "target": "esnext",
     "module": "esnext",
+    "moduleResolution": "node",
     "lib": ["esnext", "dom"],
     "allowJs": false,
     "jsx": "react-jsx",
@@ -16,20 +17,26 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": false,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "dist"
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "ladle-inject-custom-addon": ["./src/index.ts"],
+      "ladle-inject-custom-addon/*": ["./src/components/*"],
+      "ladle-inject-custom-addon/assets/*": ["./assets/*"]
+    },
+    "types": ["node"]
   },
   "include": [
-    "src/**/*"
+    "**/*",
+    ".ladle/components.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }

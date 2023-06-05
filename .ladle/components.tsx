@@ -1,14 +1,15 @@
 import React from "react"
 import type { GlobalProvider } from "@ladle/react"
+import { Truck, Layout } from "react-feather"
+
 import {
   CustomLadleAddonBar,
   AddonButton,
   AddonDialogButton,
   ExampleIcon,
-} from "../src/index"
-// todo: Why won't the tsconfig paths pick this up if I use the package name?
-// from "ladle-inject-custom-addon"
-import { Truck, Layout } from "react-feather"
+} from "ladle-inject-custom-addon"
+
+import "ladle-inject-custom-addon/assets/style.css"
 
 export const Provider: GlobalProvider = ({ children }) => (
   <Context.Provider value={{ message: "in context" }}>
