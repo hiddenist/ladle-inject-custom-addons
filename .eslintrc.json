@@ -1,7 +1,7 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["./tsconfig.json"]
+    "project": ["./tsconfig.eslint.json"]
   },
   "plugins": ["@typescript-eslint"],
   "extends": [
@@ -25,5 +25,9 @@
       "warn",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
     ]
-  }
+  },
+  "ignorePatterns": [
+    "node_modules/**/*",
+    "dist/**/*"
+  ]
 }
