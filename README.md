@@ -3,6 +3,15 @@ Minimal dependency package to add a custom Ladle addon button.
 
 This package exists because Ladle does not yet officially support third party addons.
 
+* [Quick Start](#quick-start)
+  + [Installation](#installation)
+  + [Basic Usage](#basic-usage)
+* [Customization](#customization)
+  + [Icons](#icons)
+  + [Prepending your addons](#prepending-your-addons)
+* [How this package works](#how-this-package-works)
+* [Questions or contributions](#questions-or-contributions)
+
 ## Quick Start
 
 ### Installation
@@ -21,7 +30,7 @@ Add your custom button components to your [global provider](https://ladle.dev/do
 ```tsx
 import type { GlobalProvider } from "@ladle/react"
 import {
-  CustomLadleAddons,
+  CustomLadleAddonBar,
   AddonButton,
   AddonDialogButton,
   ExampleIcon
@@ -31,10 +40,10 @@ export const Provider: GlobalProvider = ({
   children,
 }) => (
   <>
-    <CustomLadleAddons>
+    <CustomLadleAddonBar>
       <HelloAddon />
       <CustomDialogAddon />
-    </CustomLadleAddons>
+    </CustomLadleAddonBar>
     {children}
   </>
 )
@@ -82,9 +91,38 @@ const MyIcon = () => (
 ```
 </details>
 
-## How it works
+### Prepending your addons
 
-This package utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
+If you would like to put your custom addons at the beginning of the list, you can pass the `prepend` prop to the `CustomLadleAddonBar` component.
+You can add multiple addon bars to put new addons on both sides of the list.
+
+```tsx
+export const Provider = ({
+  children,
+}) => (
+  <>
+    <CustomLadleAddonBar prepend>
+      {/* your addons at the beginning of the list */}
+    </CustomLadleAddonBar>
+    <CustomLadleAddonBar>
+      {/* your addons at the end of the list */}
+    </CustomLadleAddonBar>
+    {children}
+  </>
+)
+```
+
+## How this package works
+
+`CustomLadleAddonBar` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
 
 > **Warning** <br />
 > This method of injecting components is not very stable. Changes to the Ladle package could easily break this in future updates.
+
+## Questions or contributions
+
+Feel free to create [a new issue](https://github.com/hiddenist/ladle-inject-custom-addons/issues) if you run into any problems using this package!
+
+Contributions are also welcome. I recommend opening an issue before starting work on your addition, just mention that you're working on an addition or fix.
+
+🫶🏻 Thanks for reading!

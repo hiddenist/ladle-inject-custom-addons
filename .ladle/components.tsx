@@ -1,7 +1,7 @@
 import React from "react"
 import type { GlobalProvider } from "@ladle/react"
 import {
-  CustomLadleAddons,
+  CustomLadleAddonBar,
   AddonButton,
   AddonDialogButton,
   ExampleIcon,
@@ -13,13 +13,13 @@ import { Truck, Layout } from "react-feather"
 export const Provider: GlobalProvider = ({ children }) => (
   <Context.Provider value={{ message: "in context" }}>
     {children}
-    <CustomLadleAddons prepend>
+    <CustomLadleAddonBar prepend>
       <PrependedHelloAddon />
-    </CustomLadleAddons>
-    <CustomLadleAddons>
+    </CustomLadleAddonBar>
+    <CustomLadleAddonBar>
       <CustomDialogAddon />
       <ContextTestAddon />
-    </CustomLadleAddons>
+    </CustomLadleAddonBar>
   </Context.Provider>
 )
 

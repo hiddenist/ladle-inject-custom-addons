@@ -2,9 +2,7 @@ import React from "react"
 import { createPortal } from "react-dom"
 import getAddonsListElement from "../utils/getAddonsListElement"
 
-import "./style.css"
-
-export interface CustomLadleAddonsProps
+export interface CustomLadleAddonBarProps
   extends Required<React.PropsWithChildren> {
   /**
    * If set to true, this prepends your addons to the start of the list instead of the end.
@@ -19,7 +17,7 @@ export interface CustomLadleAddonsProps
  *
  * A portal is created to mount children to the Ladle addons list UI.
  */
-export const CustomLadleAddons: React.FC<CustomLadleAddonsProps> = ({
+export const CustomLadleAddonBar: React.FC<CustomLadleAddonBarProps> = ({
   prepend = false,
   children,
 }) => {
