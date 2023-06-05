@@ -2,6 +2,8 @@ import React from "react"
 import { createPortal } from "react-dom"
 import getAddonsListElement from "../utils/getAddonsListElement"
 
+import "./style.css"
+
 export interface CustomLadleAddonsProps
   extends Required<React.PropsWithChildren> {
   /**
