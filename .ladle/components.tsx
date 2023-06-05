@@ -4,15 +4,13 @@ import {
   CustomLadleAddons,
   AddonButton,
   AddonDialogButton,
-  ExampleIcon
+  ExampleIcon,
 } from "../src/index"
 // todo: Why won't the tsconfig paths pick this up if I use the package name?
 // from "ladle-inject-custom-addon"
 import { Truck, Layout } from "react-feather"
 
-export const Provider: GlobalProvider = ({
-  children,
-}) => (
+export const Provider: GlobalProvider = ({ children }) => (
   <Context.Provider value={{ message: "in context" }}>
     <CustomLadleAddons>
       <HelloAddon />
@@ -27,7 +25,6 @@ const Context = React.createContext({
   message: "not in context",
 })
 
-
 const HelloAddon = () => (
   <AddonButton
     icon={<ExampleIcon />}
@@ -37,10 +34,7 @@ const HelloAddon = () => (
 )
 
 const CustomDialogAddon = () => (
-  <AddonDialogButton
-    icon={<Layout />}
-    tooltip="Opens a dialog box."
-  >
+  <AddonDialogButton icon={<Layout />} tooltip="Opens a dialog box.">
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
 )
@@ -48,11 +42,8 @@ const CustomDialogAddon = () => (
 const ContextTestAddon = () => {
   const { message } = React.useContext(Context)
   return (
-  <AddonDialogButton
-    icon={<Truck />}
-    tooltip="Tests context"
-  >
-    <p>{message}</p>
-  </AddonDialogButton>
+    <AddonDialogButton icon={<Truck />} tooltip="Tests context">
+      <p>{message}</p>
+    </AddonDialogButton>
   )
 }
