@@ -45,7 +45,12 @@ const CustomDialogAddon = () => (
 const ContextTestAddon = () => {
   const { message } = React.useContext(Context)
   return (
-    <AddonDialogButton icon={<Truck />} tooltip="Tests context">
+    <AddonDialogButton
+      icon={<Truck />}
+      label="Test context"
+      tooltip="Tests if the context provider can be used within the button component."
+      badge={1}
+    >
       <p>{message}</p>
     </AddonDialogButton>
   )
