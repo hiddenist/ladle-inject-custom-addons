@@ -32,6 +32,7 @@ const Context = React.createContext({
 })
 
 const PrependedHelloAddon = () => {
+  const [packageManager, setPackageManager] = React.useState<string>("")
   return (
     <AddonDialogButton
       icon={<ExampleIcon />}
@@ -42,8 +43,14 @@ const PrependedHelloAddon = () => {
         <strong>{packageName}</strong>
       </p>
       <p>Custom addons in your Ladle library!</p>
-      <div style={{ fontSize: 50, textAlign: "center" }}>✨🐙✨</div>
-      <GettingStarted packageName={packageName} />
+      <div style={{ fontSize: 50, textAlign: "center", marginBottom: 16 }}>
+        ✨🐙✨
+      </div>
+      <GettingStarted
+        packageName={packageName}
+        packageManager={packageManager}
+        setPackageManager={setPackageManager}
+      />
     </AddonDialogButton>
   )
 }
@@ -51,9 +58,7 @@ const PrependedHelloAddon = () => {
 const CustomDialogAddon = () => (
   <AddonButton
     icon={<AlertCircle />}
-    onClick={() =>
-      alert("hello! this addon should have been first in the list")
-    }
+    onClick={() => alert("hello!")}
     tooltip="Shows an alert to say hello."
   />
 )
