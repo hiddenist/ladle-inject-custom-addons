@@ -12,11 +12,11 @@ export interface AddonButtonProps extends React.ComponentProps<"button"> {
   label?: string
   /**
    * Shows a badge on the button.
-   * If a number is provided, that number will display in the badge.
+   * If a number or string is provided, that value will display in the badge.
    *
    * @default false
    */
-  badge?: boolean | number
+  badge?: boolean | number | string
 }
 
 export const AddonButton: React.FC<AddonButtonProps> = ({
@@ -28,7 +28,7 @@ export const AddonButton: React.FC<AddonButtonProps> = ({
   ...buttonProps
 }) => (
   <li>
-    <button aria-label={tooltip} type="button" {...buttonProps}>
+    <button aria-label={tooltip} title={tooltip} type="button" {...buttonProps}>
       {icon}
       <span className="ladle-addon-tooltip">{tooltip}</span>
       {label && <label>{label}</label>}

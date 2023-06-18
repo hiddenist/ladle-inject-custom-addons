@@ -15,27 +15,29 @@ export interface CustomLadleAddonBarProps
 /**
  * This should be the wrapper for all of your custom addon buttons.
  *
- * A portal is created to mount children to the Ladle addons list UI.
+ * A portal is created to mount children to the Ladle addon panel UI.
  */
 export const CustomLadleAddonBar: React.FC<CustomLadleAddonBarProps> = ({
   prepend = false,
   children,
 }) => {
-  const [addonsList, setAddonsList] = React.useState<HTMLUListElement | null>(
+  const [addonList, setAddonList] = React.useState<HTMLUListElement | null>(
     null
   )
 
   React.useEffect(() => {
-    const list = getAddonsListElement(prepend)
-    setAddonsList(list)
-    if (!list) {
-      console.warn("Unable to find addon list. Custom addons won't be mounted!")
+    const panel = getAddonsListElement(prepend)
+    setAddonList(panel)
+    if (!panel) {
+      console.warn(
+        "Unable to find addon panel. Custom addons won't be mounted!"
+      )
     }
   }, [prepend])
 
-  if (!addonsList) {
+  if (!addonList) {
     return null
   }
 
-  return createPortal(children, addonsList)
+  return createPortal(children, addonList)
 }

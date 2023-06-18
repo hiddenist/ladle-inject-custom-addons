@@ -1,50 +1,36 @@
 import React from "react"
 import { DialogCloseButton, DialogCloseButtonProps } from "./DialogCloseButton"
-import useOnClickOutside from "../utils/useOnClickOutside"
 import addClassName from "../utils/addClassName"
+import { Dialog, DialogProps } from "../vendor/dialog"
 
-export interface AddonDialogProps extends React.ComponentProps<"div"> {
-  isOpen: boolean
-  setIsOpen: (isOpen: boolean) => void
-  /**
-   * @default true
-   */
-  closeOnClickAway?: boolean
+export interface AddonDialogProps extends Omit<DialogProps, "onDismiss"> {
+  label?: string
+  close: (event: React.MouseEvent | React.KeyboardEvent) => void
   closeButtonProps?: DialogCloseButtonProps
   modalBodyProps?: Exclude<React.ComponentProps<"div">, "children">
 }
 
 export const AddonDialog: React.FC<AddonDialogProps> = ({
-  isOpen,
-  setIsOpen,
-  closeOnClickAway = true,
+  label,
+  close,
   children,
   modalBodyProps = {},
   closeButtonProps = {},
-  ...divProps
+  ...dialogProps
 }) => {
-  const dialogRef = React.useRef<HTMLDivElement>(null)
-  const closeDialog = () => {
-    setIsOpen(false)
-  }
-  useOnClickOutside(dialogRef, closeDialog, closeOnClickAway)
-  if (!isOpen) {
-    return null
-  }
   return (
-    <div
-      data-reach-dialog-content
-      role="dialog"
+    <Dialog
       aria-modal={true}
-      ref={dialogRef}
-      {...divProps}
+      onDismiss={close}
+      aria-label={label || "Modal"}
+      {...dialogProps}
     >
       <DialogCloseButton
         {...closeButtonProps}
         onClick={(e) => {
           closeButtonProps.onClick?.(e)
           if (e.isDefaultPrevented()) return
-          closeDialog()
+          close(e)
         }}
       />
       <div
@@ -53,6 +39,6 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
       >
         {children}
       </div>
-    </div>
+    </Dialog>
   )
 }
