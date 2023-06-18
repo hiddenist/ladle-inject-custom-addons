@@ -1,17 +1,22 @@
-# ladle-addon-button
+# ladle-inject-custom-addons
+
 Minimal dependency package to add a custom Ladle addon button.
 
-This package exists because Ladle does not yet officially support third party addons.
+Ladle doesn't officially support third party addons yet. Now we can pretend it does!
 
-* [Quick Start](#quick-start)
-  + [Installation](#installation)
-  + [Basic Usage](#basic-usage)
-* [Customization](#customization)
-  + [Icons](#icons)
-  + [Prepending your addons](#prepending-your-addons)
-* [Troubleshooting](#troubleshooting)
-* [How this package works](#how-this-package-works)
-* [Questions or contributions](#questions-or-contributions)
+<img width="412" alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Custom addons in your Ladle library! ✨🐙✨" src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/71761606-235a-41ab-80e0-dcfb1001f5ad">
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+  - [Installation](#installation)
+  - [Basic Usage](#basic-usage)
+- [Customization](#customization)
+  - [Icons](#icons)
+  - [Prepending your addons](#prepending-your-addons)
+- [Troubleshooting](#troubleshooting)
+- [How this package works](#how-this-package-works)
+- [Questions or contributions](#questions-or-contributions)
 
 ## Quick Start
 
@@ -34,14 +39,12 @@ import {
   CustomLadleAddonBar,
   AddonButton,
   AddonDialogButton,
-  ExampleIcon
+  ExampleIcon,
 } from "ladle-inject-custom-addons"
 
 import "ladle-inject-custom-addons/assets/style.css"
 
-export const Provider: GlobalProvider = ({
-  children,
-}) => (
+export const Provider: GlobalProvider = ({ children }) => (
   <>
     <CustomLadleAddonBar>
       <HelloAddon />
@@ -60,10 +63,7 @@ const HelloAddon = () => (
 )
 
 const CustomDialogAddon = () => (
-  <AddonDialogButton
-    icon={<ExampleIcon />}
-    tooltip="Opens a dialog box."
-  >
+  <AddonDialogButton icon={<ExampleIcon />} tooltip="Opens a dialog box.">
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
 )
@@ -92,6 +92,7 @@ const MyIcon = () => (
   </svg>
 )
 ```
+
 </details>
 
 ### Prepending your addons
@@ -100,9 +101,7 @@ If you would like to put your custom addons at the beginning of the list, you ca
 You can add multiple addon bars to put new addons on both sides of the list.
 
 ```tsx
-export const Provider = ({
-  children,
-}) => (
+export const Provider = ({ children }) => (
   <>
     <CustomLadleAddonBar prepend>
       {/* your addons at the beginning of the list */}
