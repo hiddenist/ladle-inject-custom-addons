@@ -12,11 +12,14 @@ export const LadleIconButton: React.FC<LadleIconButtonProps> = ({
 }) => (
   <button
     {...buttonProps}
-    className={addClassName(
-      "ladle-button",
-      "custom-ladle-button",
-      buttonProps.className
-    )}
+    className={addClassName("ladle-button", buttonProps.className)}
+    style={{
+      height: 36,
+      width: 36,
+      borderColor: "transparent",
+      boxShadow: "none",
+      ...buttonProps.style,
+    }}
   >
     {icon}
   </button>

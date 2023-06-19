@@ -1,19 +1,14 @@
+<p style="text-align: center">
+  <a href="https://npmjs.com/package/ladle-inject-custom-addons"><img src="https://img.shields.io/npm/v/ladle-inject-custom-addons.svg" alt="npm package"></a>
+  <a href="https://github.com/hiddenist/ladle-inject-custom-addons/actions/workflows/ci.yml"><img src="https://github.com/tajo/ladle/actions/workflows/ci.yml/badge.svg?branch=main" alt="build status"></a>
+</p><p style="text-align: center"><img width="686" alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Add your own components to your Ladle addon panel! ✨🐙✨" src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/b71c4b23-3bed-49af-9d2c-f647c9328f99"></p>
+
 # ladle-inject-custom-addons
 
-Minimal dependency package to add a custom addon button for the [ladle](https://github.com/tajo/ladle) package.
-
-Ladle doesn't officially support third party addons yet. Now we can pretend it does!
-
-<img width="412" alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Custom addons in your Ladle library! ✨🐙✨" src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/71761606-235a-41ab-80e0-dcfb1001f5ad">
-
-## Table of Contents
+[Ladle](https://github.com/tajo/ladle) doesn't officially support third party addons yet. Now we can pretend it does!
 
 - [Quick Start](#quick-start)
-  - [Installation](#installation)
-  - [Basic Usage](#basic-usage)
 - [Customization](#customization)
-  - [Icons](#icons)
-  - [Button order](#button-order)
 - [How this package works](#how-this-package-works)
 - [Questions or contributions](#questions-or-contributions)
 
@@ -89,6 +84,7 @@ const MyIcon = () => (
   </svg>
 )
 ```
+
 </details>
 
 ### Button order

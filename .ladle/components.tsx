@@ -52,7 +52,7 @@ const PrependedHelloAddon = ({ position = 0 }) => {
       <p>
         <strong>{packageName}</strong>
       </p>
-      <p>Custom addons in your Ladle library!</p>
+      <p>Add your own components to your Ladle addon panel!</p>
       <div style={{ fontSize: 50, textAlign: "center", marginBottom: 16 }}>
         ✨🐙✨
       </div>
