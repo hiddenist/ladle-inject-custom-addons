@@ -102,6 +102,7 @@ export const Provider = ({ children }) => (
       icon={<ExampleIcon />}
       onClick={() => alert("hello!")}
       tooltip="Shows an alert to say hello."
+      // This button will be third in the addon panel list:
       position={3}
     />
     {children}
