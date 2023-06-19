@@ -1,0 +1,40 @@
+name: "CI"
+
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+    lint_fix:
+      description: "lint:fix"
+      required: false
+      type: boolean
+      default: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LINT_FIX: ${{ fromJSON(inputs.lint_fix) || github.event_name == 'pull_request' && github.head_ref != 'main' }}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses:
+        with:
+          cache: "pnpm"
+          node-version-file: ".nvmrc"
+      - run: pnpm install
+      - run: pnpm typecheck
+      - run: pnpm lint
+        if: ${{ ! fromJSON(env.LINT_FIX) }}
+      - run: pnpm lint:fix
+        if: ${{ fromJSON(env.LINT_FIX) }}
+      - name: Commit linter fixes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: ${{ fromJSON(env.LINT_FIX) }}
+        with:
+          commit_message: "automated commit: pnpm lint:fix"
