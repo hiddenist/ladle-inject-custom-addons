@@ -1,6 +1,6 @@
 # ladle-inject-custom-addons
 
-Minimal dependency package to add a custom Ladle addon button.
+Minimal dependency package to add a custom addon button for the [ladle](https://github.com/tajo/ladle) package.
 
 Ladle doesn't officially support third party addons yet. Now we can pretend it does!
 
@@ -13,8 +13,7 @@ Ladle doesn't officially support third party addons yet. Now we can pretend it d
   - [Basic Usage](#basic-usage)
 - [Customization](#customization)
   - [Icons](#icons)
-  - [Prepending your addons](#prepending-your-addons)
-- [Troubleshooting](#troubleshooting)
+  - [Button order](#button-order)
 - [How this package works](#how-this-package-works)
 - [Questions or contributions](#questions-or-contributions)
 
@@ -34,6 +33,8 @@ pnpm add ladle-inject-custom-addons
 Add your custom button components to your [global provider](https://ladle.dev/docs/providers). You'll use the provided `AddonButton` components to make buttons that match the existing Ladle addon bar buttons.
 
 ```tsx
+// .ladle/components.tsx
+
 import type { GlobalProvider } from "@ladle/react"
 import {
   CustomLadleAddonBar,
@@ -88,14 +89,15 @@ const MyIcon = () => (
   </svg>
 )
 ```
-
 </details>
 
-### Positioning your addons
+### Button order
 
 If you would like to put your custom addons at a different place in the list, you can pass the `position` property.
 
 ```tsx
+// .ladle/components.tsx
+
 export const Provider = ({ children }) => (
   <>
     <AddonButton
@@ -112,7 +114,7 @@ export const Provider = ({ children }) => (
 
 ## How this package works
 
-`CustomLadleAddonBar` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
+`AddonButton` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
 
 > **Warning** <br />
 > This method of injecting components may not be very stable. Changes to the Ladle package could easily break this in future updates.
