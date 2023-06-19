@@ -25,9 +25,9 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "ladle-inject-custom-addon": ["./src/index.ts"],
-      "ladle-inject-custom-addon/*": ["./src/components/*"],
-      "ladle-inject-custom-addon/assets/*": ["./assets/*"]
+      "ladle-inject-custom-addons": ["./src/index.ts"],
+      "ladle-inject-custom-addons/*": ["./src/components/*"],
+      "ladle-inject-custom-addons/assets/*": ["./assets/*"]
     },
     "types": ["node"]
   },

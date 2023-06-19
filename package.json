@@ -1,6 +1,6 @@
 {
   "name": "ladle-inject-custom-addons",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Adds a button to the Ladle addon bar",
   "files": [
     "dist",

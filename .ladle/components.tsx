@@ -6,11 +6,11 @@ import {
   AddonButton,
   AddonDialogButton,
   ExampleIcon,
-} from "ladle-inject-custom-addon"
+} from "ladle-inject-custom-addons"
 
 import { GettingStarted } from "./components/GettingStarted"
 
-const packageName = "ladle-inject-custom-addon"
+const packageName = "ladle-inject-custom-addons"
 
 interface MyCustomAddonConfig {
   customAddon: {
@@ -52,15 +52,15 @@ const PrependedHelloAddon = ({ position = 0 }) => {
       <p>
         <strong>{packageName}</strong>
       </p>
-      <p>Add your own components to your Ladle addon panel!</p>
+      <p>Add your own components in the Ladle addon panel!</p>
       <div style={{ fontSize: 50, textAlign: "center", marginBottom: 16 }}>
         ✨🐙✨
       </div>
-      <GettingStarted
+      {/* <GettingStarted
         packageName={packageName}
         packageManager={packageManager}
         setPackageManager={setPackageManager}
-      />
+      /> */}
     </AddonDialogButton>
   )
 }
