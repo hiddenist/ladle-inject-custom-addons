@@ -56,11 +56,11 @@ const PrependedHelloAddon = ({ position = 0 }) => {
       <div style={{ fontSize: 50, textAlign: "center", marginBottom: 16 }}>
         ✨🐙✨
       </div>
-      {/* <GettingStarted
+      <GettingStarted
         packageName={packageName}
         packageManager={packageManager}
         setPackageManager={setPackageManager}
-      /> */}
+      />
     </AddonDialogButton>
   )
 }
