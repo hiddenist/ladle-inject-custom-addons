@@ -16,8 +16,7 @@
       "types": "./dist/components/*.d.ts",
       "import": "./dist/components/*.js",
       "require": "./dist/components/*.cjs.js"
-    },
-    "./assets/*": "./assets/*"
+    }
   },
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",

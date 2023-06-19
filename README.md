@@ -42,14 +42,10 @@ import {
   ExampleIcon,
 } from "ladle-inject-custom-addons"
 
-import "ladle-inject-custom-addons/assets/style.css"
-
 export const Provider: GlobalProvider = ({ children }) => (
   <>
-    <CustomLadleAddonBar>
-      <HelloAddon />
-      <CustomDialogAddon />
-    </CustomLadleAddonBar>
+    <HelloAddon />
+    <CustomDialogAddon />
     {children}
   </>
 )
@@ -95,20 +91,19 @@ const MyIcon = () => (
 
 </details>
 
-### Prepending your addons
+### Positioning your addons
 
-If you would like to put your custom addons at the beginning of the list, you can pass the `prepend` prop to the `CustomLadleAddonBar` component.
-You can add multiple addon bars to put new addons on both sides of the list.
+If you would like to put your custom addons at a different place in the list, you can pass the `position` property.
 
 ```tsx
 export const Provider = ({ children }) => (
   <>
-    <CustomLadleAddonBar prepend>
-      {/* your addons at the beginning of the list */}
-    </CustomLadleAddonBar>
-    <CustomLadleAddonBar>
-      {/* your addons at the end of the list */}
-    </CustomLadleAddonBar>
+    <AddonButton
+      icon={<ExampleIcon />}
+      onClick={() => alert("hello!")}
+      tooltip="Shows an alert to say hello."
+      position={3}
+    />
     {children}
   </>
 )

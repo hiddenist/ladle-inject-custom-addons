@@ -8,7 +8,6 @@ import {
   ExampleIcon,
 } from "ladle-inject-custom-addon"
 
-import "ladle-inject-custom-addon/assets/style.css"
 import { GettingStarted } from "./components/GettingStarted"
 
 const packageName = "ladle-inject-custom-addon"
