@@ -31,9 +31,10 @@ export const AddonButton: React.FC<AddonButtonProps> = ({
   children,
   badge = false,
   label = "",
-  position,
+  position = 0,
   ...buttonProps
 }) => {
+  const showBadge = badge || ["string", "number"].includes(typeof badge)
   return useAddonPanelPortal(
     <>
       <button
@@ -45,7 +46,7 @@ export const AddonButton: React.FC<AddonButtonProps> = ({
         {icon}
         <span className="ladle-addon-tooltip">{tooltip}</span>
         {label && <label>{label}</label>}
-        {badge && <div className="ladle-badge">{badge}</div>}
+        {showBadge && <div className="ladle-badge">{badge}</div>}
       </button>
       {children}
     </>,
