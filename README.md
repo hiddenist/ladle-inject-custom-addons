@@ -109,21 +109,12 @@ export const Provider = ({ children }) => (
 )
 ```
 
-## Troubleshooting
-
-Prepended addons stacked? Close buttons on modals not showing up in the right place?
-Make sure that you've imported the stylesheet.
-
-```ts
-import "ladle-inject-custom-addons/assets/style.css"
-```
-
 ## How this package works
 
 `CustomLadleAddonBar` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
 
 > **Warning** <br />
-> This method of injecting components is not very stable. Changes to the Ladle package could easily break this in future updates.
+> This method of injecting components may not be very stable. Changes to the Ladle package could easily break this in future updates.
 
 ## Questions or contributions
 
