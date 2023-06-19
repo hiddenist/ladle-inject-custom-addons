@@ -32,7 +32,6 @@ Add your custom button components to your [global provider](https://ladle.dev/do
 
 import type { GlobalProvider } from "@ladle/react"
 import {
-  CustomLadleAddonBar,
   AddonButton,
   AddonDialogButton,
   ExampleIcon,
@@ -41,7 +40,7 @@ import {
 export const Provider: GlobalProvider = ({ children }) => (
   <>
     <HelloAddon />
-    <CustomDialogAddon />
+    <DialogExampleAddon />
     {children}
   </>
 )
@@ -54,7 +53,7 @@ const HelloAddon = () => (
   />
 )
 
-const CustomDialogAddon = () => (
+const DialogExampleAddon = () => (
   <AddonDialogButton icon={<ExampleIcon />} tooltip="Opens a dialog box.">
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
