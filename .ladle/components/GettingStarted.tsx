@@ -30,6 +30,7 @@ const LinkButton = styled(PlainFormField).attrs({ as: "button" })`
 const PlainSelect = styled(PlainFormField).attrs({ as: "select" })`
   background-color: transparent;
   border: none;
+  padding: 10px 0;
 `
 
 const Label = styled.label`
@@ -40,13 +41,12 @@ const SelectPackageManager = styled.div`
   padding-bottom: 1px;
 `
 
-export const GettingStarted: React.FC<{ packageName: string }> = ({
-  packageName,
-}) => {
+export const GettingStarted: React.FC<{
+  packageName: string
+  packageManager: string
+  setPackageManager: (pm: string) => void
+}> = ({ packageName, packageManager, setPackageManager }) => {
   const [showPm, setShowPm] = React.useState(false)
-  const [packageManager, setPackageManager] = React.useState<string>(
-    defaultPackageManager
-  )
 
   const pm =
     (packageManagers.includes(packageManager) && packageManager) ||
@@ -60,12 +60,13 @@ export const GettingStarted: React.FC<{ packageName: string }> = ({
   const selectPm = (
     <>
       <Label htmlFor="packageManager">
-        Package manager:{" "}
+        Which package manager do you use?{" "}
         <PlainSelect
           name="packageManager"
           onChange={(ev) => {
             setPackageManager(ev.target.value)
           }}
+          style={{ paddingTop: 9, paddingBottom: 9 }}
         >
           {packageManagers.map((p) => (
             <option key={p} selected={p === packageManager}>
@@ -78,9 +79,7 @@ export const GettingStarted: React.FC<{ packageName: string }> = ({
   )
 
   const showPmButton = (
-    <LinkButton onClick={() => setShowPm(true)}>
-      I don't use {packageManager}
-    </LinkButton>
+    <LinkButton onClick={() => setShowPm(true)}>I don't use {pm}</LinkButton>
   )
 
   return (

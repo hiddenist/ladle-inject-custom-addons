@@ -1,4 +1,5 @@
 import React from "react"
+import { useAddonPanelPortal } from "src/utils/useAddonPanelPortal"
 
 export interface AddonButtonProps extends React.ComponentProps<"button"> {
   icon: React.ReactNode
@@ -17,6 +18,11 @@ export interface AddonButtonProps extends React.ComponentProps<"button"> {
    * @default false
    */
   badge?: boolean | number | string
+  /**
+   * Determines the position/priority of the addon button within the existing ladle addons.
+   * @default 0
+   */
+  position?: number
 }
 
 export const AddonButton: React.FC<AddonButtonProps> = ({
@@ -25,15 +31,24 @@ export const AddonButton: React.FC<AddonButtonProps> = ({
   children,
   badge = false,
   label = "",
+  position,
   ...buttonProps
-}) => (
-  <li>
-    <button aria-label={tooltip} title={tooltip} type="button" {...buttonProps}>
-      {icon}
-      <span className="ladle-addon-tooltip">{tooltip}</span>
-      {label && <label>{label}</label>}
-      {badge && <div className="ladle-badge">{badge}</div>}
-    </button>
-    {children}
-  </li>
-)
+}) => {
+  return useAddonPanelPortal(
+    <>
+      <button
+        aria-label={tooltip}
+        title={tooltip}
+        type="button"
+        {...buttonProps}
+      >
+        {icon}
+        <span className="ladle-addon-tooltip">{tooltip}</span>
+        {label && <label>{label}</label>}
+        {badge && <div className="ladle-badge">{badge}</div>}
+      </button>
+      {children}
+    </>,
+    { position }
+  )
+}
