@@ -1,7 +1,7 @@
-<p style="text-align: center">
+<p align="center">
   <a href="https://npmjs.com/package/ladle-inject-custom-addons"><img src="https://img.shields.io/npm/v/ladle-inject-custom-addons.svg" alt="npm package"></a>
   <a href="https://github.com/hiddenist/ladle-inject-custom-addons/actions/workflows/ci.yml"><img src="https://github.com/tajo/ladle/actions/workflows/ci.yml/badge.svg?branch=main" alt="build status"></a>
-</p><p style="text-align: center"><img width="686" alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Add your own components to your Ladle addon panel! ✨🐙✨" src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/b71c4b23-3bed-49af-9d2c-f647c9328f99"></p>
+</p><p align="center"><img width="686" alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Add your own components to your Ladle addon panel! ✨🐙✨" src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/b71c4b23-3bed-49af-9d2c-f647c9328f99"></p>
 
 # ladle-inject-custom-addons
 
