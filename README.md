@@ -1,17 +1,16 @@
-# ladle-addon-button
-Minimal dependency package to add a custom Ladle addon button.
+<p style="text-align: center">
+  <a href="https://npmjs.com/package/ladle-inject-custom-addons"><img src="https://img.shields.io/npm/v/ladle-inject-custom-addons.svg" alt="npm package"></a>
+  <a href="https://github.com/hiddenist/ladle-inject-custom-addons/actions/workflows/ci.yml"><img src="https://github.com/tajo/ladle/actions/workflows/ci.yml/badge.svg?branch=main" alt="build status"></a>
+</p><p style="text-align: center"><img width="686" alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Add your own components to your Ladle addon panel! ✨🐙✨" src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/b71c4b23-3bed-49af-9d2c-f647c9328f99"></p>
 
-This package exists because Ladle does not yet officially support third party addons.
+# ladle-inject-custom-addons
 
-* [Quick Start](#quick-start)
-  + [Installation](#installation)
-  + [Basic Usage](#basic-usage)
-* [Customization](#customization)
-  + [Icons](#icons)
-  + [Prepending your addons](#prepending-your-addons)
-* [Troubleshooting](#troubleshooting)
-* [How this package works](#how-this-package-works)
-* [Questions or contributions](#questions-or-contributions)
+[Ladle](https://github.com/tajo/ladle) doesn't officially support third party addons yet. Now we can pretend it does!
+
+- [Quick Start](#quick-start)
+- [Customization](#customization)
+- [How this package works](#how-this-package-works)
+- [Questions or contributions](#questions-or-contributions)
 
 ## Quick Start
 
@@ -29,24 +28,20 @@ pnpm add ladle-inject-custom-addons
 Add your custom button components to your [global provider](https://ladle.dev/docs/providers). You'll use the provided `AddonButton` components to make buttons that match the existing Ladle addon bar buttons.
 
 ```tsx
+// .ladle/components.tsx
+
 import type { GlobalProvider } from "@ladle/react"
 import {
   CustomLadleAddonBar,
   AddonButton,
   AddonDialogButton,
-  ExampleIcon
+  ExampleIcon,
 } from "ladle-inject-custom-addons"
 
-import "ladle-inject-custom-addons/assets/style.css"
-
-export const Provider: GlobalProvider = ({
-  children,
-}) => (
+export const Provider: GlobalProvider = ({ children }) => (
   <>
-    <CustomLadleAddonBar>
-      <HelloAddon />
-      <CustomDialogAddon />
-    </CustomLadleAddonBar>
+    <HelloAddon />
+    <CustomDialogAddon />
     {children}
   </>
 )
@@ -60,10 +55,7 @@ const HelloAddon = () => (
 )
 
 const CustomDialogAddon = () => (
-  <AddonDialogButton
-    icon={<ExampleIcon />}
-    tooltip="Opens a dialog box."
-  >
+  <AddonDialogButton icon={<ExampleIcon />} tooltip="Opens a dialog box.">
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
 )
@@ -92,44 +84,36 @@ const MyIcon = () => (
   </svg>
 )
 ```
+
 </details>
 
-### Prepending your addons
+### Button order
 
-If you would like to put your custom addons at the beginning of the list, you can pass the `prepend` prop to the `CustomLadleAddonBar` component.
-You can add multiple addon bars to put new addons on both sides of the list.
+If you would like to put your custom addons at a different place in the list, you can pass the `position` property.
 
 ```tsx
-export const Provider = ({
-  children,
-}) => (
+// .ladle/components.tsx
+
+export const Provider = ({ children }) => (
   <>
-    <CustomLadleAddonBar prepend>
-      {/* your addons at the beginning of the list */}
-    </CustomLadleAddonBar>
-    <CustomLadleAddonBar>
-      {/* your addons at the end of the list */}
-    </CustomLadleAddonBar>
+    <AddonButton
+      icon={<ExampleIcon />}
+      onClick={() => alert("hello!")}
+      tooltip="Shows an alert to say hello."
+      // This button will be third in the addon panel list:
+      position={3}
+    />
     {children}
   </>
 )
 ```
 
-## Troubleshooting
-
-Prepended addons stacked? Close buttons on modals not showing up in the right place?
-Make sure that you've imported the stylesheet.
-
-```ts
-import "ladle-inject-custom-addons/assets/style.css"
-```
-
 ## How this package works
 
-`CustomLadleAddonBar` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
+`AddonButton` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
 
 > **Warning** <br />
-> This method of injecting components is not very stable. Changes to the Ladle package could easily break this in future updates.
+> This method of injecting components may not be very stable. Changes to the Ladle package could easily break this in future updates.
 
 ## Questions or contributions
 

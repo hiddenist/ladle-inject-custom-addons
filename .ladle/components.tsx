@@ -1,26 +1,38 @@
 import React from "react"
-import type { GlobalProvider } from "@ladle/react"
-import { Truck, Layout } from "react-feather"
+import { Truck, AlertCircle } from "react-feather"
 
 import {
-  CustomLadleAddonBar,
+  CustomGlobalProvider,
   AddonButton,
   AddonDialogButton,
   ExampleIcon,
 } from "ladle-inject-custom-addon"
 
-import "ladle-inject-custom-addon/assets/style.css"
+import { GettingStarted } from "./components/GettingStarted"
 
-export const Provider: GlobalProvider = ({ children }) => (
+const packageName = "ladle-inject-custom-addon"
+
+interface MyCustomAddonConfig {
+  customAddon: {
+    enabled: boolean
+  }
+}
+
+export const Provider: CustomGlobalProvider<MyCustomAddonConfig> = ({
+  config,
+  children,
+}) => (
   <Context.Provider value={{ message: "in context" }}>
     {children}
-    <CustomLadleAddonBar prepend>
-      <PrependedHelloAddon />
-    </CustomLadleAddonBar>
-    <CustomLadleAddonBar>
-      <CustomDialogAddon />
-      <ContextTestAddon />
-    </CustomLadleAddonBar>
+    <CustomDialogAddon />
+    <ContextTestAddon position={2} />
+    {config.addons.customAddon.enabled && (
+      <AddonButton
+        icon={<ExampleIcon />}
+        tooltip="this addon must be enabled in config.mjs to show up"
+      />
+    )}
+    <PrependedHelloAddon position={-1} />
   </Context.Provider>
 )
 
@@ -28,21 +40,41 @@ const Context = React.createContext({
   message: "not in context",
 })
 
-const PrependedHelloAddon = () => (
+const PrependedHelloAddon = ({ position = 0 }) => {
+  const [packageManager, setPackageManager] = React.useState<string>("")
+  return (
+    <AddonDialogButton
+      icon={<ExampleIcon />}
+      tooltip="Shows info about this package."
+      style={{ display: "grid", gap: 16 }}
+      position={position}
+    >
+      <p>
+        <strong>{packageName}</strong>
+      </p>
+      <p>Add your own components to your Ladle addon panel!</p>
+      <div style={{ fontSize: 50, textAlign: "center", marginBottom: 16 }}>
+        ✨🐙✨
+      </div>
+      <GettingStarted
+        packageName={packageName}
+        packageManager={packageManager}
+        setPackageManager={setPackageManager}
+      />
+    </AddonDialogButton>
+  )
+}
+
+const CustomDialogAddon = ({ position = 0 }) => (
   <AddonButton
-    icon={<ExampleIcon />}
-    onClick={() => alert("hello! this addon should have been first in the list")}
+    icon={<AlertCircle />}
+    onClick={() => alert("hello!")}
     tooltip="Shows an alert to say hello."
+    position={position}
   />
 )
 
-const CustomDialogAddon = () => (
-  <AddonDialogButton icon={<Layout />} tooltip="Opens a dialog box.">
-    <p>Custom text, or more advanced components, will show up in a dialog.</p>
-  </AddonDialogButton>
-)
-
-const ContextTestAddon = () => {
+const ContextTestAddon = ({ position = 0 }) => {
   const { message } = React.useContext(Context)
   return (
     <AddonDialogButton
@@ -50,6 +82,7 @@ const ContextTestAddon = () => {
       label="Test context"
       tooltip="Tests if the context provider can be used within the button component."
       badge={1}
+      position={position}
     >
       <p>{message}</p>
     </AddonDialogButton>

@@ -1,7 +1,6 @@
 import React from "react"
 import { LadleIconButtonProps, LadleIconButton } from "./LadleIconButton"
 import { CloseIcon, IconProps } from "./icons"
-import addClassName from "../utils/addClassName"
 
 export interface DialogCloseButtonProps
   extends Omit<LadleIconButtonProps, "icon"> {
@@ -16,10 +15,12 @@ export const DialogCloseButton: React.FC<DialogCloseButtonProps> = ({
 }) => (
   <div
     {...wrapperProps}
-    className={addClassName(
-      "custom-ladle-close-button-wrapper",
-      buttonProps.className
-    )}
+    style={{
+      position: "absolute",
+      insetInlineEnd: -6,
+      top: 0,
+      ...wrapperProps?.style,
+    }}
   >
     <LadleIconButton
       aria-label="Close modal"
