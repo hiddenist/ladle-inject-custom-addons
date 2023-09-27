@@ -5,7 +5,7 @@ import {
   CustomGlobalProvider,
   AddonButton,
   AddonDialogButton,
-  ExampleIcon,
+  ExampleLadleIcon,
 } from "ladle-inject-custom-addons"
 
 import { GettingStarted } from "./components/GettingStarted"
@@ -28,7 +28,7 @@ export const Provider: CustomGlobalProvider<MyCustomAddonConfig> = ({
     <ContextTestAddon position={2} />
     {config.addons.customAddon.enabled && (
       <AddonButton
-        icon={<ExampleIcon />}
+        icon={<ExampleLadleIcon />}
         tooltip="this addon must be enabled in config.mjs to show up"
       />
     )}
@@ -44,7 +44,7 @@ const PrependedHelloAddon = ({ position = 0 }) => {
   const [packageManager, setPackageManager] = React.useState<string>("")
   return (
     <AddonDialogButton
-      icon={<ExampleIcon />}
+      icon={<ExampleLadleIcon />}
       tooltip="Shows info about this package."
       style={{ display: "grid", gap: 16 }}
       position={position}
