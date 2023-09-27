@@ -34,7 +34,7 @@ import type { GlobalProvider } from "@ladle/react"
 import {
   AddonButton,
   AddonDialogButton,
-  ExampleIcon,
+  ExampleLadleIcon,
 } from "ladle-inject-custom-addons"
 
 export const Provider: GlobalProvider = ({ children }) => (
@@ -47,14 +47,14 @@ export const Provider: GlobalProvider = ({ children }) => (
 
 const HelloAddon = () => (
   <AddonButton
-    icon={<ExampleIcon />}
+    icon={<ExampleLadleIcon />}
     onClick={() => alert("hello!")}
     tooltip="Shows an alert to say hello."
   />
 )
 
 const DialogExampleAddon = () => (
-  <AddonDialogButton icon={<ExampleIcon />} tooltip="Opens a dialog box.">
+  <AddonDialogButton icon={<ExampleLadleIcon />} tooltip="Opens a dialog box.">
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
 )
@@ -96,7 +96,7 @@ If you would like to put your custom addons at a different place in the list, yo
 export const Provider = ({ children }) => (
   <>
     <AddonButton
-      icon={<ExampleIcon />}
+      icon={<ExampleLadleIcon />}
       onClick={() => alert("hello!")}
       tooltip="Shows an alert to say hello."
       // This button will be third in the addon panel list:

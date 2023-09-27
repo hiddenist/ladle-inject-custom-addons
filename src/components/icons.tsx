@@ -21,9 +21,9 @@ const IconSvg: React.FC<IconSvgProps> = ({ size = 24, ...props }) => (
   />
 )
 
-export type IconProps = Omit<IconSvgProps, "children">
+export type IconLadleIconPropsProps = Omit<IconSvgProps, "children">
 
-export const CloseIcon: React.FC<IconProps> = ({ size = 18, ...props }) => {
+export const LadleDialogCloseIcon: React.FC<LadleIconProps> = ({ size = 18, ...props }) => {
   return (
     <IconSvg size={size} {...props}>
       <path d="M0 0h24v24H0z" stroke="none" />
@@ -32,7 +32,7 @@ export const CloseIcon: React.FC<IconProps> = ({ size = 18, ...props }) => {
   )
 }
 
-export const ExampleIcon: React.FC<IconProps> = (props) => {
+export const ExampleLadleIcon: React.FC<LadleIconProps> = (props) => {
   return (
     <IconSvg {...props}>
       <path d="M 21.609 10.914 C 18.931 17.502 12.002 22.249 12.002 22.249 C 12.002 22.249 4.872 17.177 2.394 10.914 C -0.669 3.172 8.281 -0.396 12.002 6.99 C 15.722 -0.396 24.744 3.201 21.609 10.914 Z" />
