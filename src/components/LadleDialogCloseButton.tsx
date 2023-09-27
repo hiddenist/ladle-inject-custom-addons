@@ -2,13 +2,13 @@ import React from "react"
 import { LadleIconButtonProps, LadleIconButton } from "./LadleIconButton"
 import { LadleDialogCloseIcon, LadleIconProps } from "./icons"
 
-export interface DialogCloseButtonProps
+export interface LadleDialogCloseButtonProps
   extends Omit<LadleIconButtonProps, "icon"> {
-  iconProps?: IconProps
+  iconProps?: LadleIconProps
   wrapperProps?: React.ComponentProps<"div">
 }
 
-export const LadleDialogCloseButton: React.FC<DialogCloseButtonProps> = ({
+export const LadleDialogCloseButton: React.FC<LadleDialogCloseButtonProps> = ({
   iconProps,
   wrapperProps,
   ...buttonProps
