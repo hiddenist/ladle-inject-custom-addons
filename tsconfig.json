@@ -31,12 +31,6 @@
     },
     "types": ["node"]
   },
-  "include": [
-    "**/*",
-    ".ladle/components.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["**/*", ".ladle/components.tsx"],
+  "exclude": ["node_modules", "dist", ""]
 }
