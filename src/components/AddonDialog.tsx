@@ -1,5 +1,8 @@
 import React from "react"
-import { DialogCloseButton, DialogCloseButtonProps } from "./DialogCloseButton"
+import {
+  LadleDialogCloseButton,
+  LadleDialogCloseButtonProps,
+} from "./LadleDialogCloseButton"
 import addClassName from "../utils/addClassName"
 import {
   DialogOverlay,
@@ -11,7 +14,7 @@ export interface AddonDialogProps
   extends Omit<DialogOverlayProps, "onDismiss"> {
   label?: string
   close: (event: React.MouseEvent | React.KeyboardEvent) => void
-  closeButtonProps?: DialogCloseButtonProps
+  closeButtonProps?: LadleDialogCloseButtonProps
   modalBodyProps?: Exclude<React.ComponentProps<"div">, "children">
   maxWidth?: string
 }
@@ -38,7 +41,7 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
         data-testid="ladle-dialog"
         style={{ maxWidth }}
       >
-        <DialogCloseButton
+        <LadleDialogCloseButton
           {...closeButtonProps}
           onClick={(e) => {
             closeButtonProps.onClick?.(e)
