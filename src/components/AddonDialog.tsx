@@ -1,13 +1,19 @@
 import React from "react"
 import { DialogCloseButton, DialogCloseButtonProps } from "./DialogCloseButton"
 import addClassName from "../utils/addClassName"
-import { Dialog, DialogProps } from "../vendor/dialog"
+import {
+  DialogOverlay,
+  DialogContent,
+  DialogOverlayProps,
+} from "../vendor/dialog"
 
-export interface AddonDialogProps extends Omit<DialogProps, "onDismiss"> {
+export interface AddonDialogProps
+  extends Omit<DialogOverlayProps, "onDismiss"> {
   label?: string
   close: (event: React.MouseEvent | React.KeyboardEvent) => void
   closeButtonProps?: DialogCloseButtonProps
   modalBodyProps?: Exclude<React.ComponentProps<"div">, "children">
+  maxWidth?: string
 }
 
 export const AddonDialog: React.FC<AddonDialogProps> = ({
@@ -16,29 +22,37 @@ export const AddonDialog: React.FC<AddonDialogProps> = ({
   children,
   modalBodyProps = {},
   closeButtonProps = {},
-  ...dialogProps
+  isOpen,
+  maxWidth = "40em",
+  ...dialogOverlayProps
 }) => {
   return (
-    <Dialog
-      aria-modal={true}
+    <DialogOverlay
+      data-testid="ladle-dialog-overlay"
+      {...dialogOverlayProps}
+      isOpen={isOpen}
       onDismiss={close}
-      aria-label={label || "Modal"}
-      {...dialogProps}
     >
-      <DialogCloseButton
-        {...closeButtonProps}
-        onClick={(e) => {
-          closeButtonProps.onClick?.(e)
-          if (e.isDefaultPrevented()) return
-          close(e)
-        }}
-      />
-      <div
-        {...modalBodyProps}
-        className={addClassName("ladle-addon-modal-body", modalBodyProps?.id)}
+      <DialogContent
+        aria-label={label || "Modal"}
+        data-testid="ladle-dialog"
+        style={{ maxWidth }}
       >
-        {children}
-      </div>
-    </Dialog>
+        <DialogCloseButton
+          {...closeButtonProps}
+          onClick={(e) => {
+            closeButtonProps.onClick?.(e)
+            if (e.isDefaultPrevented()) return
+            close(e)
+          }}
+        />
+        <div
+          {...modalBodyProps}
+          className={addClassName("ladle-addon-modal-body", modalBodyProps?.id)}
+        >
+          {children}
+        </div>
+      </DialogContent>
+    </DialogOverlay>
   )
 }
