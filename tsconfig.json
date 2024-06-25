@@ -3,7 +3,7 @@
     "incremental": true,
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["esnext", "dom"],
     "allowJs": false,
     "jsx": "react-jsx",
