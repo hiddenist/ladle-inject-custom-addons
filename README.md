@@ -7,6 +7,8 @@
 
 [Ladle](https://github.com/tajo/ladle) doesn't officially support third party addons yet. Now we can pretend it does!
 
+Confirmed to work with `@ladle/react` ^4.1.0.
+
 - [Quick Start](#quick-start)
 - [Customization](#customization)
 - [How this package works](#how-this-package-works)
