@@ -1,14 +1,14 @@
 import React from "react"
 import { LadleIconButtonProps, LadleIconButton } from "./LadleIconButton"
-import { CloseIcon, IconProps } from "./icons"
+import { LadleDialogCloseIcon, LadleIconProps } from "./icons"
 
-export interface DialogCloseButtonProps
+export interface LadleDialogCloseButtonProps
   extends Omit<LadleIconButtonProps, "icon"> {
-  iconProps?: IconProps
+  iconProps?: LadleIconProps
   wrapperProps?: React.ComponentProps<"div">
 }
 
-export const DialogCloseButton: React.FC<DialogCloseButtonProps> = ({
+export const LadleDialogCloseButton: React.FC<LadleDialogCloseButtonProps> = ({
   iconProps,
   wrapperProps,
   ...buttonProps
@@ -25,7 +25,7 @@ export const DialogCloseButton: React.FC<DialogCloseButtonProps> = ({
     <LadleIconButton
       aria-label="Close modal"
       {...buttonProps}
-      icon={<CloseIcon {...iconProps} />}
+      icon={<LadleDialogCloseIcon {...iconProps} />}
     />
   </div>
 )
