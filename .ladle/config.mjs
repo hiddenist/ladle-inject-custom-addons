@@ -14,7 +14,8 @@ export default {
       enabled: false,
     },
     customAddon: {
-      enabled: false,
+      enabled: true,
+      customMessage: "You can also add custom values to the config file!",
     },
   },
 }

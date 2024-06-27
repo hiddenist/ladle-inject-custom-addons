@@ -1,5 +1,5 @@
 import React from "react"
-import { Truck, AlertCircle } from "react-feather"
+import { AlertCircle, ThumbsUp, Truck } from "react-feather"
 
 import {
   CustomGlobalProvider,
@@ -15,6 +15,7 @@ const packageName = "ladle-inject-custom-addons"
 interface MyCustomAddonConfig {
   customAddon: {
     enabled: boolean
+    customMessage: string
   }
 }
 
@@ -28,8 +29,8 @@ export const Provider: CustomGlobalProvider<MyCustomAddonConfig> = ({
     <ContextTestAddon position={2} />
     {config.addons.customAddon.enabled && (
       <AddonButton
-        icon={<ExampleLadleIcon />}
-        tooltip="this addon must be enabled in config.mjs to show up"
+        icon={<ThumbsUp />}
+        tooltip={`This addon must be enabled in config.mjs to show up. ${config.addons.customAddon.customMessage}`}
       />
     )}
     <PrependedHelloAddon position={-1} />
