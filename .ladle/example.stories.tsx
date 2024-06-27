@@ -23,8 +23,9 @@ export const Home: Story = () => (
     </div>
     <img
       width="686"
+      style={{ aspectRatio: "1372/856" }}
       alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Add your own components in the Ladle addon panel! ✨🐙✨"
-      src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/235b9c68-a7e5-40f3-b2cc-838f7c608b19"
+      src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/2ddb63d2-45db-4097-9fda-85510b19a111"
     />
     <p>
       This is a working example of the <code>ladle-inject-custom-addons</code>{" "}
