@@ -2,10 +2,11 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+
   pull_request:
-    types: [opened, synchronize]
+    types: ["opened", "synchronize"]
+
   workflow_dispatch:
     inputs:
       lint_fix:
@@ -15,33 +16,38 @@ on:
         default: true
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-ci
   cancel-in-progress: true
 
 env:
-  LINT_FIX: ${{ fromJSON(inputs.lint_fix || 'false') || github.event_name == 'pull_request' && github.head_ref != 'main' }}
+  fixLintingErrors: ${{ fromJSON(inputs.lint_fix || 'false') || github.event_name == 'pull_request' && github.head_ref != 'main' }}
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: install pnpm
-        run: |
-          npm i -g pnpm
-          pnpm -v
+
       - uses: actions/setup-node@v4
         with:
           cache: "pnpm"
           node-version-file: ".nvmrc"
-      - run: pnpm install
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.4.0
+          run_install: true
+
       - run: pnpm typecheck
+
       - run: pnpm lint
-        if: ${{ ! fromJSON(env.LINT_FIX) }}
+        if: ${{ ! fromJSON(env.fixLintingErrors) }}
+
       - run: pnpm lint:fix
-        if: ${{ fromJSON(env.LINT_FIX) }}
+        if: ${{ fromJSON(env.fixLintingErrors) }}
+
       - name: Commit linter fixes
         uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ca1b5058a842 #v5
-        if: ${{ fromJSON(env.LINT_FIX) }}
+        if: ${{ fromJSON(env.fixLintingErrors) }}
         with:
-          commit_message: "automated commit: pnpm lint:fix"
+          commit_message: "pnpm lint:fix"
