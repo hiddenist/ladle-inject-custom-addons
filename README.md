@@ -7,7 +7,7 @@
 
 [Ladle](https://github.com/tajo/ladle) doesn't officially support third party addons yet. Now we can pretend it does!
 
-Confirmed to work up through `@ladle/react` version ^4.10.0.
+Check out working example: https://hiddenist.github.io/ladle-inject-custom-addons/
 
 - [Quick Start](#quick-start)
 - [Customization](#customization)
@@ -22,7 +22,9 @@ Confirmed to work up through `@ladle/react` version ^4.10.0.
 pnpm add ladle-inject-custom-addons
 ```
 
-> **Note** <br />
+This package is confirmed to work with `@ladle/react` up through version ^4.10.0.
+
+> [!NOTE]
 > Replace `pnpm` with `yarn` or `npm` to match what you use for your project. 😉
 
 ### Basic Usage
@@ -51,12 +53,17 @@ const HelloAddon = () => (
   <AddonButton
     icon={<ExampleLadleIcon />}
     onClick={() => alert("hello!")}
+    label="Say hello"
     tooltip="Shows an alert to say hello."
   />
 )
 
 const DialogExampleAddon = () => (
-  <AddonDialogButton icon={<ExampleLadleIcon />} tooltip="Opens a dialog box.">
+  <AddonDialogButton
+    icon={<ExampleLadleIcon />}
+    label="Show dialog"
+    tooltip="Opens a dialog box."
+  >
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
 )
@@ -66,7 +73,7 @@ const DialogExampleAddon = () => (
 
 ### Icons
 
-Most icon libraries will work for your addon buttons. Check out [react-feather](https://github.com/feathericons/react-feather) if you're not sure where to start!
+Need icons for your addon buttons? Check out [react-feather](https://github.com/feathericons/react-feather) for a great set of icons!
 
 You can also add your own SVGs for your icons. Use `currentColor` for the stroke or fill on the icon to have it use the default hover and active colors. The icons are expected to be 24 by 24 pixels in size.
 
@@ -88,9 +95,12 @@ const MyIcon = () => (
 
 </details>
 
+> [!NOTE]
+> Please be aware that you may encounter issues using certain libraries for your button icons. Material UI icons have been observed causing style issues with production bundles of component story libraries.
+
 ### Button order
 
-If you would like to put your custom addons at a different place in the list, you can pass the `position` property.
+If you would like your custom addon to display in a different position within the addon list, you can pass the `position` property.
 
 ```tsx
 // .ladle/components.tsx
@@ -100,6 +110,7 @@ export const Provider = ({ children }) => (
     <AddonButton
       icon={<ExampleLadleIcon />}
       onClick={() => alert("hello!")}
+      label="Say hello"
       tooltip="Shows an alert to say hello."
       // This button will be third in the addon panel list:
       position={3}
@@ -113,7 +124,7 @@ export const Provider = ({ children }) => (
 
 `AddonButton` utilizes a [React Portal](https://react.dev/reference/react-dom/createPortal) to mount your buttons within the existing Ladle addon list.
 
-> **Warning** <br />
+> [!WARNING]
 > This method of injecting components may not be very stable. Changes to the Ladle package could easily break this in future updates.
 
 ## Questions or contributions
