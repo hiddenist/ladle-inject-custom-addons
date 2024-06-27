@@ -34,27 +34,25 @@ body {
 
 .plus-one {
   position: absolute;
+  z-index: 2147483648;
   bottom: 100%;
   animation: plus-one 1s forwards;
   font-weight: bold;
-  font-size: 12px;
-  color: rgba(10, 60, 90, 0.9);
-  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 15px;
+  color: #276ef1da;
   border-radius: 4px;
 }
 
 [data-theme="dark"] .plus-one {
-  color: rgba(117, 194, 242, 0.9);
-  background-color: rgba(0, 0, 0, 0.2);
+  color: #72a4ffda;
 }
 
 @keyframes plus-one {
   0% {
     opacity: 0;
-    transform: translateY(100%) scale(0.5);
+    transform: translateY(100%) scale(0.2);
   }
   25% {
-    opacity: 1;
     transform: translateY(-50%) scale(1);
   }
   50% {
@@ -62,6 +60,6 @@ body {
   }
   100% {
     opacity: 0;
-    transform: translateY(0);
+    transform: translateY(0%) scale(1);
   }
 }
