@@ -1,5 +1,8 @@
+const baseUrl = process.env["BASE_URL"] || "/"
+
 export default {
   stories: ["{src,.ladle}/**/*.stories.{js,jsx,ts,tsx}"],
+  base: baseUrl,
   addons: {
     ladle: {
       enabled: false,
