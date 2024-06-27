@@ -29,13 +29,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: pnpm/action-setup@v4
         with:
           version: 9.4.0
           run_install: true
-
-      - name: Build package
-        run: pnpm build
 
       - name: Build Ladle static content
         run: pnpm ladle build
