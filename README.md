@@ -7,7 +7,7 @@
 
 [Ladle](https://github.com/tajo/ladle) doesn't officially support third party addons yet. Now we can pretend it does!
 
-Confirmed to work up through `@ladle/react` version ^4.10.0.
+Check out working example: https://hiddenist.github.io/ladle-inject-custom-addons/
 
 - [Quick Start](#quick-start)
 - [Customization](#customization)
@@ -22,7 +22,9 @@ Confirmed to work up through `@ladle/react` version ^4.10.0.
 pnpm add ladle-inject-custom-addons
 ```
 
-> **Note** <br />
+This package is confirmed to work with `@ladle/react` up through version ^4.10.0.
+
+> [!NOTE]
 > Replace `pnpm` with `yarn` or `npm` to match what you use for your project. 😉
 
 ### Basic Usage
@@ -51,12 +53,17 @@ const HelloAddon = () => (
   <AddonButton
     icon={<ExampleLadleIcon />}
     onClick={() => alert("hello!")}
+    label="Say hello"
     tooltip="Shows an alert to say hello."
   />
 )
 
 const DialogExampleAddon = () => (
-  <AddonDialogButton icon={<ExampleLadleIcon />} tooltip="Opens a dialog box.">
+  <AddonDialogButton
+    icon={<ExampleLadleIcon />}
+    label="Show dialog"
+    tooltip="Opens a dialog box."
+  >
     <p>Custom text, or more advanced components, will show up in a dialog.</p>
   </AddonDialogButton>
 )
@@ -103,6 +110,7 @@ export const Provider = ({ children }) => (
     <AddonButton
       icon={<ExampleLadleIcon />}
       onClick={() => alert("hello!")}
+      label="Say hello"
       tooltip="Shows an alert to say hello."
       // This button will be third in the addon panel list:
       position={3}

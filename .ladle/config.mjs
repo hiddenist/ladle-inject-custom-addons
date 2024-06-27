@@ -8,7 +8,7 @@ export default {
       enabled: false,
     },
     theme: {
-      enabled: false,
+      enabled: true,
     },
     mode: {
       enabled: false,

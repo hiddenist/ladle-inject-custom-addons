@@ -18,11 +18,11 @@ export const contextMessage = (
     <p>
       This message is populated from a context provided in the{" "}
       <code>CustomGlobalProvider</code> component. If you want to know more
-      about how it works, check out the
+      about how it works, check out the{" "}
       <a href="https://github.com/hiddenist/ladle-inject-custom-addons/blob/main/.ladle/components.tsx">
         components.tsx
       </a>{" "}
-      source code.
+      source code on GitHub.
     </p>
   </>
 )

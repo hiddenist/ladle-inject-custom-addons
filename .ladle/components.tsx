@@ -33,10 +33,18 @@ export const Provider: CustomGlobalProvider<MyCustomAddonConfig> = ({
     <ContextTestAddon position={2} />
 
     {config.addons.customAddon.enabled && (
-      <AddonButton
+      <AddonDialogButton
         icon={<ThumbsUp />}
-        tooltip={`This addon must be enabled in config.mjs to show up. ${config.addons.customAddon.customMessage}`}
-      />
+        label="Use custom configuration"
+        tooltip="Uses a custom configuration to show a custom message."
+      >
+        <p>
+          This addon is set up so that it must be enabled in the{" "}
+          <code>config.mjs</code> file to show up, similar to the built-in Ladle
+          addons.
+        </p>
+        <p>{config.addons.customAddon.customMessage}</p>
+      </AddonDialogButton>
     )}
 
     <PrependedHelloAddon position={-1} />
@@ -48,6 +56,7 @@ const PrependedHelloAddon = ({ position = 0 }) => {
   return (
     <AddonDialogButton
       icon={<ExampleLadleIcon />}
+      label="Show package info"
       tooltip="Shows info about this package."
       position={position}
     >
@@ -68,6 +77,7 @@ const PrependedHelloAddon = ({ position = 0 }) => {
 const CustomDialogAddon = ({ position = 0 }) => (
   <AddonButton
     icon={<AlertCircle />}
+    label="Show an alert"
     onClick={() => alert("hello!")}
     tooltip="Shows an alert to say hello."
     position={position}
@@ -79,7 +89,7 @@ export const ContextTestAddon = ({ position = 0 }) => {
   return (
     <AddonDialogButton
       icon={<Truck />}
-      label="Addons with Context"
+      label="Use a context"
       tooltip="Demonstrates that addon buttons are able to inherit parent context."
       position={position}
     >

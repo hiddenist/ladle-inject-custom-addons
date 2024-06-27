@@ -1,22 +1,7 @@
 import React from "react"
 
 const PlusOne = () => {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        bottom: "100%",
-        animation: "plus-one 1s forwards",
-        fontWeight: "bold",
-        fontSize: 12,
-        color: "rgba(10, 60, 90, 0.9)",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        borderRadius: 4,
-      }}
-    >
-      +1
-    </div>
-  )
+  return <div className="plus-one">+1</div>
 }
 
 export const usePlusOneAnimated = () => {

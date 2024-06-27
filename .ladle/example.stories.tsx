@@ -5,11 +5,38 @@ import { AddonButton } from "ladle-inject-custom-addons"
 import { usePlusOneAnimated } from "./components/PlusOneAnimated"
 
 export const Home: Story = () => (
-  <div>
-    <h1>Welcome</h1>
+  <div className="home">
+    <h1>ladle-inject-custom-addons</h1>
+    <div className="github-badges">
+      <a href="https://npmjs.com/package/ladle-inject-custom-addons">
+        <img
+          src="https://img.shields.io/npm/v/ladle-inject-custom-addons.svg"
+          alt="npm package"
+        />
+      </a>
+      <a href="https://github.com/hiddenist/ladle-inject-custom-addons/actions/workflows/ci.yml">
+        <img
+          src="https://github.com/hiddenist/ladle-inject-custom-addons/actions/workflows/ci.yml/badge.svg?branch=main"
+          alt="build status"
+        />
+      </a>
+    </div>
+    <img
+      width="686"
+      alt="A screenshot of the Ladle addon bar, with a dialog box displaying text: 'ladle-inject-custom-addons' Add your own components in the Ladle addon panel! ✨🐙✨"
+      src="https://github.com/hiddenist/ladle-inject-custom-addons/assets/563879/235b9c68-a7e5-40f3-b2cc-838f7c608b19"
+    />
     <p>
-      This is a simple example story. Check out the addon buttons at the bottom
-      of the screen to see the magic!
+      This is a working example of the <code>ladle-inject-custom-addons</code>{" "}
+      package. Check out the buttons at the bottom of the screen to see it in
+      action.
+    </p>
+    <p>
+      Learn more at the{" "}
+      <a href="https://github.com/hiddenist/ladle-inject-custom-addons">
+        hiddenist/ladle-inject-custom-addons
+      </a>{" "}
+      GitHub repository!
     </p>
   </div>
 )
@@ -43,8 +70,9 @@ export const StoryWithAddon: Story = () => {
             {elements}
           </>
         }
+        label="Count clicks"
         tooltip="Increment the click count for this story"
-        position={10}
+        position={0}
         badge={clickCount < 10 ? clickCount : "9+"}
         onClick={() => {
           addPlusOne()
