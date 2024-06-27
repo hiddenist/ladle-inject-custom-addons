@@ -45,7 +45,7 @@ export const StoryWithAddon: Story = () => {
         }
         tooltip="Increment the click count for this story"
         position={10}
-        badge={true}
+        badge={clickCount < 10 ? clickCount : "9+"}
         onClick={() => {
           addPlusOne()
           setClickCount((c) => c + 1)

@@ -1,3 +1,13 @@
+.ladle-main {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.octomoji {
+  font-size: 50px;
+  text-align: "center";
+  margin-bottom: 16px;
+}
+
 @keyframes plus-one {
   0% {
     opacity: 0;

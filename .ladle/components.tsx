@@ -10,6 +10,7 @@ import {
 } from "ladle-inject-custom-addons"
 
 import { GettingStarted } from "./components/GettingStarted"
+import { Context, contextMessage } from "./components/ContextExample"
 
 const packageName = "ladle-inject-custom-addons"
 
@@ -24,48 +25,23 @@ export const Provider: CustomGlobalProvider<MyCustomAddonConfig> = ({
   config,
   children,
 }) => (
-  <Context.Provider
-    value={{
-      message: (
-        <>
-          <p>
-            This message being displayed shows that the addon button is able to
-            receive data from a context provider. Yay!
-          </p>
-          <p>
-            This message is populated from a context provided in the{" "}
-            <code>CustomGlobalProvider</code> component. If you want to know
-            more about how it works, check out the
-            <a href="https://github.com/hiddenist/ladle-inject-custom-addons/blob/main/.ladle/components.tsx">
-              components.tsx
-            </a>{" "}
-            source code.
-          </p>
-        </>
-      ),
-    }}
-  >
-    <div style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>{children}</div>
+  <Context.Provider value={{ message: contextMessage }}>
+    {children}
+
     <CustomDialogAddon />
+
     <ContextTestAddon position={2} />
+
     {config.addons.customAddon.enabled && (
       <AddonButton
         icon={<ThumbsUp />}
         tooltip={`This addon must be enabled in config.mjs to show up. ${config.addons.customAddon.customMessage}`}
       />
     )}
+
     <PrependedHelloAddon position={-1} />
   </Context.Provider>
 )
-
-const Context = React.createContext({
-  message: (
-    <p>
-      If you can see this message, it means that the addon is not receiving data
-      from the context provider in the CustomGlobalProvider component. Dang.
-    </p>
-  ),
-})
 
 const PrependedHelloAddon = ({ position = 0 }) => {
   const [packageManager, setPackageManager] = React.useState<string>("")
@@ -73,16 +49,13 @@ const PrependedHelloAddon = ({ position = 0 }) => {
     <AddonDialogButton
       icon={<ExampleLadleIcon />}
       tooltip="Shows info about this package."
-      style={{ display: "grid", gap: 16 }}
       position={position}
     >
       <p>
         <strong>{packageName}</strong>
       </p>
       <p>Add your own components in the Ladle addon panel!</p>
-      <div style={{ fontSize: 50, textAlign: "center", marginBottom: 16 }}>
-        ✨🐙✨
-      </div>
+      <div className="octomoji">✨🐙✨</div>
       <GettingStarted
         packageName={packageName}
         packageManager={packageManager}
@@ -101,7 +74,7 @@ const CustomDialogAddon = ({ position = 0 }) => (
   />
 )
 
-const ContextTestAddon = ({ position = 0 }) => {
+export const ContextTestAddon = ({ position = 0 }) => {
   const { message } = React.useContext(Context)
   return (
     <AddonDialogButton
